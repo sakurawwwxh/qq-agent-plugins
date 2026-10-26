@@ -15,6 +15,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
+        with:
+          # 推送必须用带 bypass 的 token；只给脚本步骤设 GH_TOKEN 是不够的 ——
+          # checkout 会把默认 GITHUB_TOKEN 写进 git remote，下一步 git push 仍会被保护挡下。
+          token: ${{ secrets.STATS_TOKEN || secrets.GITHUB_TOKEN }}
       - uses: actions/setup-node@v5
         with:
           node-version: "22.x"
@@ -31,11 +35,11 @@ jobs:
             git add plugins/index.json
             git commit -m "chore: 更新下载量 [skip ci]"
             # main 已开分支保护（必须走 PR + verify），GITHUB_TOKEN 不能直接推。
-            # 统计只是展示数据，不能因此每天发失败邮件：推不上去就保留旧值并明确提示。
+            # 推不上去就红：静默保留旧值会让下载量永远停在旧数（issue #10）。
             if ! git push; then
-              echo "::warning::下载量已统计但无法写回 main（分支保护禁止直接推送）；本次保留旧值"
-              echo "要恢复自动更新：改用 PAT 走 PR 流程，或为该 workflow 配置受控的绕过规则。"
-              exit 0
+              echo "::error::下载量已统计但无法写回 main（分支保护禁止直接推送）"
+              echo "检查 STATS_TOKEN 是否有效，或 main 的保护是否允许 GitHub Actions bypass。"
+              exit 1
             fi
           else
             echo "没有变化"
