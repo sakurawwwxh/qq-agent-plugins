@@ -1,7 +1,7 @@
 {
   "version": 1,
   "note": "qq-agent-plus 的官方插件索引。控制台「设置 → 插件」默认从这个文件读可安装的插件（宿主侧 plugins.indexUrls / plugins.indexUrl 可改）。字段：必填 id / version / sha256 / 下载地址（downloadUrl、tarball、url 三个名字任选其一，按这个顺序取第一个）；可选 name / description / author / homepage / tags / capabilities / apiVersion / minVersion / revoked。apiVersion 与 minVersion 对不上的条目照样列出来，只是标成「本机装不了」并说明原因。**sha256 是必填**：包先按它校验再换入，所以即使走镜像/CDN，内容被换过也一定会被发现。",
-  "updatedAt": "2026-10-29",
+  "updatedAt": "2026-10-30",
   "plugins": [
     {
       "id": "bilibili",
@@ -509,6 +509,33 @@
       "size": 76421,
       "updatedAt": "2026-10-28",
       "downloads": 44
+    },
+    {
+      "id": "sing",
+      "name": "点歌唱歌",
+      "version": "1.0.2",
+      "description": "点歌唱歌 + 说话：群里说「用语音唱一首X」，机器人用你自己训练的音色翻唱并发 QQ 语音条，默认整首（长歌按 30 秒分段换声再拼回）；非点歌的文本会交给 Windows/Edge 神经语音读出来，也能用你的音色说话。⚠️ 换声模型要跑在使用者自己的电脑上（模型常驻，整首 4 分钟约 22 秒），服务器只做转发。",
+      "author": "BAofanTing",
+      "homepage": "https://github.com/BAOfanTing/qq-agent-plus-singPlugin",
+      "apiVersion": 2,
+      "minVersion": "0.9.10",
+      "tags": [
+        "社区",
+        "语音",
+        "媒体"
+      ],
+      "capabilities": [
+        "tools",
+        "schedule",
+        "log",
+        "config",
+        "secrets",
+        "http",
+        "media",
+        "send"
+      ],
+      "downloadUrl": "https://github.com/sakurawwwxh/qq-agent-plugins/releases/download/packages/sing-1.0.2.tar.gz",
+      "sha256": "c314ed183717229334be6a2881eed1c3cb617a1bded0acaca95753936ddf1cd5"
     }
   ]
 }
