@@ -1,12 +1,12 @@
 {
   "version": 1,
   "note": "qq-agent-plus 的官方插件索引。控制台「设置 → 插件」默认从这个文件读可安装的插件（宿主侧 plugins.indexUrls / plugins.indexUrl 可改）。字段：必填 id / version / sha256 / 下载地址（downloadUrl、tarball、url 三个名字任选其一，按这个顺序取第一个）；可选 name / description / author / homepage / tags / capabilities / apiVersion / minVersion / revoked。apiVersion 与 minVersion 对不上的条目照样列出来，只是标成「本机装不了」并说明原因。**sha256 是必填**：包先按它校验再换入，所以即使走镜像/CDN，内容被换过也一定会被发现。",
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-10",
   "plugins": [
     {
       "id": "bilibili",
       "name": "B 站",
-      "version": "1.1.0",
+      "version": "1.1.1",
       "description": "搜索与查看 B 站视频、UP 主、热门、评论、字幕；把视频下载合流后发到群里；点赞/投币/收藏/关注/评论/发弹幕（写操作需管理员批准并按天限额）",
       "author": "sakurawwwxh",
       "homepage": "https://github.com/sakurawwwxh/qq-agent-plus/tree/main/examples/plugins/bilibili",
@@ -27,15 +27,15 @@
         "send",
         "log"
       ],
-      "downloadUrl": "https://github.com/sakurawwwxh/qq-agent-plugins/releases/download/packages/bilibili-1.1.0.tar.gz",
-      "sha256": "bcf038ad9139bcf896e693990b818876cadded40c67d8af84cbc213b828ba907",
+      "downloadUrl": "https://github.com/sakurawwwxh/qq-agent-plugins/releases/download/packages/bilibili-1.1.1.tar.gz",
+      "sha256": "f464873da4e8b58b3ce5d4f418f6a01ec26ad7fb8e3c8e23e358c8fff144608d",
       "icon": "",
       "category": "媒体",
       "changelogUrl": "https://github.com/sakurawwwxh/qq-agent-plugins/releases",
       "readmeUrl": "https://github.com/sakurawwwxh/qq-agent-plus/blob/main/docs/BILIBILI.md",
       "readme": "# B 站 bilibili\n\n**读 + 观看 + 互动**：搜索/看懂视频（字幕、语音转写、弹幕密度、评论）、把视频合流发到群里、点赞/投币/收藏/关注/评论/弹幕。\n\n## 登录\n控制台 → 插件 → B 站 → 扫码登录（推荐），或在聊天里对机器人说「登录B站」。Cookie 加密保存。\n\n## 写操作信任模型\n每个写动作独立开关（默认关）；开启后每次执行都要管理员批准**具体目标**，批准一次只管一次；同插件两次写至少间隔 60 秒；当天有配额；失败自动退还。\n\n## 说明\n- 不做投稿、发动态；番剧/付费/地区限制视频拿不到流。\n- 无字幕视频的语音转写需要宿主配置过语音识别；帧画面描述需要视觉模型。",
-      "size": 36827,
-      "updatedAt": "2026-10-28",
+      "size": 39239,
+      "updatedAt": "2026-11-10",
       "downloads": 324
     },
     {
